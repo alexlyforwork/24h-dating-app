@@ -12,7 +12,7 @@ const firebaseConfig = {
   storageBucket: "datingapp-3be01.firebasestorage.app",
   messagingSenderId: "217120280298",
   appId: "1:217120280298:web:ae71cdb8a5e9866f251193",
-  measurementId: "G-8Y0PP8VNMD"
+  measurementId: "G-8Y0PP8VNMD",
 };
 
 // Initialize Firebase
