@@ -5,7 +5,7 @@ WORKDIR /app
 # Copy only the necessary files for installing dependencies
 COPY package.json package-lock.json ./
 
-RUN npm installing
+RUN npm install
 
 COPY . .
 
