@@ -1,12 +1,15 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import dotenv from "dotenv";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
+
+dotenv.config({ override: true });
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyAKX2X2mHBt34N_nazfFgwtSfQabWT60ZA",
+  apiKey: process.env.firebaseAPIKey,
   authDomain: "datingapp-3be01.firebaseapp.com",
   projectId: "datingapp-3be01",
   storageBucket: "datingapp-3be01.firebasestorage.app",
