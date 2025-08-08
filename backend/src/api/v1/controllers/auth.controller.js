@@ -24,7 +24,7 @@ class AuthController {
       const uid = user.uid;
       pool.query(
         "INSERT INTO users (uid, name, email) VALUES ($1, $2, $3) ON CONFLICT (uid) DO NOTHING",
-        [uid, name, email]
+        [uid, name, email],
       );
 
       return res.status(200).json({ message: "Registration successful", user });

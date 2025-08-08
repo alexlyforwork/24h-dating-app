@@ -15,8 +15,8 @@ app.get("/protected", authMiddleware, (req, res) => {
 });
 
 app.get("/user", async (req, res) => {
-  const result = await pool.query("SELECT * FROM users")
+  const result = await pool.query("SELECT * FROM users");
   res.send(result.rows);
-})
+});
 
 export default app;
