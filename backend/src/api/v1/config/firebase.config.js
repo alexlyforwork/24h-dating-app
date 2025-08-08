@@ -1,13 +1,15 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
 import dotenv from "dotenv";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import admin from "firebase-admin";
+import { getApps } from "firebase-admin/app";
+import { initializeApp as initializeClientApp } from "firebase/app";
+import fs from "fs";
+const serviceAccount = JSON.parse(
+  fs.readFileSync(new URL("./serviceAccountKey.json", import.meta.url)),
+);
 
 dotenv.config({ override: true });
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Client-side Firebase SDK (for features like sending ID tokens)
 const firebaseConfig = {
   apiKey: process.env.firebaseAPIKey,
   authDomain: "datingapp-3be01.firebaseapp.com",
@@ -18,7 +20,14 @@ const firebaseConfig = {
   measurementId: "G-8Y0PP8VNMD",
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeClientApp(firebaseConfig);
+
+// Admin SDK for backend operations
+if (!getApps().length) {
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+}
 
 export { app };
+export default admin;

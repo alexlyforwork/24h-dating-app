@@ -10,6 +10,15 @@ class AuthController {
           .json({ message: "Email and password are required" });
       }
       const user = await AuthService.userSignUp(email, password);
+
+      const idToken = await user.getIdToken();
+
+      res.cookie("token", idToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: 3600000, // 1 hour
+      });
       return res.status(200).json({ message: "Registration successful", user });
     } catch (error) {
       console.error("Registration error:", error);
@@ -25,6 +34,15 @@ class AuthController {
           .json({ message: "Email and password are required" });
       }
       const user = await AuthService.userLogin(email, password);
+
+      const idToken = await user.getIdToken();
+
+      res.cookie("token", idToken, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "strict",
+        maxAge: 3600000, // 1 hour
+      });
 
       return res.status(200).json({ message: "Log in successful", user });
     } catch (error) {
