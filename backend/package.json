@@ -1,10 +1,11 @@
 {
   "name": "24h-dating-app",
+  "type": "module",
   "version": "1.0.0",
   "main": "./src/app.js",
   "scripts": {
     "dev": "nodemon ./src/server.js",
-    "format:prettier": "prettier --write .",
+    "format:prettier": "prettier --write \"src/**/*.{js,ts,json,md}\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,8 +21,12 @@
   "homepage": "https://github.com/alexlyforwork/24h-dating-app#readme",
   "description": "",
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.1",
     "express": "^5.1.0",
+    "firebase": "^12.0.0",
+    "firebase-admin": "^13.4.0",
+    "fs": "^0.0.1-security",
     "pg": "^8.16.3"
   },
   "devDependencies": {
