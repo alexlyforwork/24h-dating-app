@@ -1,5 +1,4 @@
 import AuthService from "../services/auth.service.js";
-import pool from "../config/db.config.js";
 
 class AuthController {
   async userSignUp(req, res) {
@@ -10,7 +9,7 @@ class AuthController {
           .status(400)
           .json({ message: "Name, email, and password are required" });
       }
-      const user = await AuthService.userSignUp(email, password);
+      const user = await AuthService.userSignUp(name, email, password);
 
       const idToken = await user.getIdToken();
 
@@ -21,11 +20,9 @@ class AuthController {
         maxAge: 3600000, // 1 hour
       });
 
-      const uid = user.uid;
-      pool.query(
-        "INSERT INTO users (uid, name, email) VALUES ($1, $2, $3) ON CONFLICT (uid) DO NOTHING",
-        [uid, name, email],
-      );
+      // const uid = user.uid;
+
+      // await AuthService.saveUserToDb(uid, name, email);
 
       return res.status(200).json({ message: "Registration successful", user });
     } catch (error) {
