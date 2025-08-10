@@ -1,5 +1,4 @@
 import AuthService from "../services/auth.service.js";
-import pool from "../config/db.config.js";
 
 class AuthController {
   async userSignUp(req, res) {
@@ -22,10 +21,8 @@ class AuthController {
       });
 
       const uid = user.uid;
-      pool.query(
-        "INSERT INTO users (uid, name, email) VALUES ($1, $2, $3) ON CONFLICT (uid) DO NOTHING",
-        [uid, name, email],
-      );
+
+      await AuthService.saveUserToDb(uid, name, email);
 
       return res.status(200).json({ message: "Registration successful", user });
     } catch (error) {
