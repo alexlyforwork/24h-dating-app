@@ -9,7 +9,7 @@ class AuthController {
           .status(400)
           .json({ message: "Name, email, and password are required" });
       }
-      const user = await AuthService.userSignUp(email, password);
+      const user = await AuthService.userSignUp(name, email, password);
 
       const idToken = await user.getIdToken();
 
@@ -20,9 +20,9 @@ class AuthController {
         maxAge: 3600000, // 1 hour
       });
 
-      const uid = user.uid;
+      // const uid = user.uid;
 
-      await AuthService.saveUserToDb(uid, name, email);
+      // await AuthService.saveUserToDb(uid, name, email);
 
       return res.status(200).json({ message: "Registration successful", user });
     } catch (error) {
