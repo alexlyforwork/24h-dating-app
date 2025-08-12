@@ -9,6 +9,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use("/api/v1", v1Router);
 
+import profileRouter from "./api/v1/routes/profile.router.js";
+
+app.use("/api/v1/profile", profileRouter);
+
 //Test to be deleted later
 app.get("/protected", authMiddleware, (req, res) => {
   res.status(200).json({ message: "You have access!", user: req.user });
@@ -16,6 +20,11 @@ app.get("/protected", authMiddleware, (req, res) => {
 
 app.get("/user", async (req, res) => {
   const result = await pool.query("SELECT * FROM users");
+  res.send(result.rows);
+});
+
+app.get("/profile", async (req, res) => {
+  const result = await pool.query("SELECT * FROM user_details");
   res.send(result.rows);
 });
 
