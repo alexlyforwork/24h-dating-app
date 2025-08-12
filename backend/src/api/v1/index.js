@@ -7,5 +7,4 @@ router.use(express.json());
 router.use("/auth", authRouter);
 router.use("/profile", profileRouter);
 
-
 export { router };

@@ -10,7 +10,7 @@ profileRouter.post("/set", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 profileRouter.put("/set", async (req, res, next) => {
   try {
@@ -19,7 +19,7 @@ profileRouter.put("/set", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 profileRouter.post("/preferences", async (req, res, next) => {
   try {
@@ -28,7 +28,7 @@ profileRouter.post("/preferences", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 profileRouter.put("/preferences", async (req, res, next) => {
   try {
@@ -37,7 +37,7 @@ profileRouter.put("/preferences", async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-})
+});
 
 profileRouter.get("/view", async (req, res, next) => {
   try {
@@ -48,6 +48,6 @@ profileRouter.get("/view", async (req, res, next) => {
   }
 });
 
-profileRouter
+profileRouter;
 
 export default profileRouter;
