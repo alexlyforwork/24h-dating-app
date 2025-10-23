@@ -47,3 +47,9 @@ CREATE TABLE IF NOT EXISTS messages (
   sent_at TIMESTAMPTZ DEFAULT NOW(),
   read BOOLEAN DEFAULT false
 );
+
+CREATE TABLE IF NOT EXISTS hobbies (
+  hobby_id TEXT PRIMARY KEY,
+  hobby TEXT UNIQUE NOT NULL,
+  score INT DEFAULT 0
+);

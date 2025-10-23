@@ -19,11 +19,7 @@ class AuthController {
         sameSite: "strict",
         maxAge: 3600000, // 1 hour
       });
-
-      // const uid = user.uid;
-
-      // await AuthService.saveUserToDb(uid, name, email);
-
+      
       return res.status(200).json({ message: "Registration successful", user });
     } catch (error) {
       console.error("Registration error:", error);

@@ -1,5 +1,5 @@
 import pool from "../config/db.config.js";
-
+ 
 class ProfileService {
   async getProfile(uid) {
     const profile = await pool.query(
